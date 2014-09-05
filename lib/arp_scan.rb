@@ -7,3 +7,7 @@ require_relative "./arp_scan/host"
 module ARPScan
 
 end
+
+def ARPScan(argument_string = nil)
+  ARPScan::ARPScanner.scan argument_string
+end

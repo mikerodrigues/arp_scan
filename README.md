@@ -1,10 +1,19 @@
 # ARPScan
 
-TODO: Write a gem description
+Very simple wrapper for using and parsing output from `arp-scan`.
+
+You will need to make sure `arp-scan` is installed. See the arp-scan homepage at http://www.nta-monitor.com/tools/arp-scan/
+
+## Notes
+
+This code is untested and will hopefully be refactored soon.
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
+    
+    gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
 
 ```ruby
 gem 'arp_scan'
@@ -20,7 +29,37 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+No argument parsing is done by the gem, it takes the same arguments as
+`arp-scan` and just passes them to the binary. The result is returned as a
+ScanReport object which makes it easy to iterate through hosts as well as see
+metainfo about the scan itself.
+
+Scanning is easy:
+
+    require 'arp_scan'
+
+    report = ARPScan('--localnet')
+
+    report.datalink => "EN10MB (Ethernet)",
+    report.interface => "eth0"
+    report.range_size => "256"
+    report.reply_count => "2"
+    report.scan_rate => "169.99" # hosts/sec
+    report.scan_time => "1.586" # seconds
+    report.version => "1.8.1" # arp_scan version
+
+Each `ScanReport` also holds zero or more `Host` objects representing founds
+hosts:
+
+    first_host = report.hosts.first
+    first_host.ip_addr = '10.0.0.1'
+    first_host.mac = '00:11:22:33:44:55'
+    first_host.oui = "NIC Manufacturer"
+
+
+
+
+
 
 ## Contributing
 
