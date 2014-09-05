@@ -12,11 +12,9 @@ This code is untested and will hopefully be refactored soon.
 ## Installation
 
 Add this line to your application's Gemfile:
-    
-    gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
 
 ```ruby
-gem 'arp_scan'
+gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
 ```
 
 And then execute:
