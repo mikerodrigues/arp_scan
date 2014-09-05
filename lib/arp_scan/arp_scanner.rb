@@ -3,6 +3,7 @@ require_relative './arp_scanner'
 module ARPScan
   module ARPScanner
 
+    # I got this method from: http://stackoverflow.com/questions/2108727
     # Cross-platform way of finding an executable in the $PATH.
     #
     #   which('ruby') #=> /usr/bin/ruby

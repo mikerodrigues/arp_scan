@@ -46,7 +46,7 @@ Scanning is easy:
     report.reply_count => "2"
     report.scan_rate => "169.99" # hosts/sec
     report.scan_time => "1.586" # seconds
-    report.version => "1.8.1" # arp_scan version
+    report.version => "1.8.1" # arp-scan version
 
 Each `ScanReport` also holds zero or more `Host` objects representing founds
 hosts:
