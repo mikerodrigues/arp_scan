@@ -9,16 +9,16 @@ module ARPScan
     Scan_Summary_Regex = /Ending arp-scan (?<version>.*): (?<range_size>.*) hosts scanned in (?<scan_time>.*) seconds \((?<scan_rate>.*) hosts\/sec\). (?<reply_count>.*) responded/
 
     def self.process(string)
-      report = {}
-      report[:hosts] = string.scan(Host_Entry_Regex).map {|entry| Host.new(*entry)}
-      report[:interface],
-      report[:datalink] = string.scan(Interface_Summary_Regex)[0]
-      report[:version],
-      report[:range_size],
-      report[:scan_time],
-      report[:scan_rate],
-      report[:reply_count] = string.scan(Scan_Summary_Regex)[0]
-      ScanReport.new(report)
+      results = {}
+      results[:hosts] = string.scan(Host_Entry_Regex).map {|entry| Host.new(*entry)}
+      results[:interface],
+      results[:datalink] = string.scan(Interface_Summary_Regex)[0]
+      results[:version],
+      results[:range_size],
+      results[:scan_time],
+      results[:scan_rate],
+      results[:reply_count] = string.scan(Scan_Summary_Regex)[0]
+      ScanReport.new(results)
     end
   end
 end
