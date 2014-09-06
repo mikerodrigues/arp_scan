@@ -1,4 +1,4 @@
-require_relative './arp_scanner'
+require_relative './scan_result_processor'
 
 module ARPScan
   module ARPScanner
@@ -22,7 +22,7 @@ module ARPScan
     def self.scan(argument_string = nil)
       @arp_scan_path = which 'arp-scan'
       output_string = `#{@arp_scan_path} #{argument_string}`
-      OutputProcessor.process(output_string)
+      ScanResultProcessor.process(output_string)
     end
   end
 end

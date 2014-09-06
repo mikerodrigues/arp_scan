@@ -2,7 +2,7 @@ require_relative './host'
 require_relative './scan_report'
 
 module ARPScan
-  module OutputProcessor
+  module ScanResultProcessor
 
     Host_Entry_Regex = /(\d+.\d+.\d+.\d+)\s(\w\w:\w\w:\w\w:\w\w:\w\w:\w\w)\s(.*)/
     Interface_Summary_Regex = /Interface: (?<interface>.+), datalink type: (?<datalink>.*$)/
