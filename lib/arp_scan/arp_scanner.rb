@@ -18,12 +18,12 @@ module ARPScan
       return nil
     end
 
-
     def self.scan(argument_string = nil)
-      @arp_scan_path = which 'arp-scan'
-      output_string = `#{@arp_scan_path} #{argument_string}`
-      ScanResultProcessor.process(output_string)
+      result_string = `#{which 'arp-scan'} #{argument_string}`
+      ScanResultProcessor.process(result_string)
     end
+
+    private_class_method :which
   end
 end
 

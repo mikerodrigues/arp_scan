@@ -1,8 +1,17 @@
-require '../lib/arp_scan.rb'
+require '../lib/arp_scan'
 
-describe ARPScan, '#scan' do
-  it 'returns a ScanReport' do
-    report = ARPScan.scan('-I eth0.748 128.111.186.1-128.111.186.75')
-    report.class.should eq(ARPScan::ScanReport)
+RSpec.describe ARPScan do
+  report = ARPScan('-l')
+
+  it "is a method you can pass arp-scan arguments to as a string" do
+    expect(ARPScan('-l').class).to eq(ARPScan::ScanReport)
+  end
+
+  it "returns a nested hash of attributes" do
+    expect(report.to_hash.class).to eq(Hash)
+  end
+
+  it "returns a nested array of attributes" do
+    expect(report.to_array.class).to eq(Array)
   end
 end
