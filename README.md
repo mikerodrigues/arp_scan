@@ -10,11 +10,11 @@ options but be sure to understand what you're doing before you do it:
 * Edit `/etc/sudoers` to allow user to run `arp-scan` as root without a
   password.
 
-	user host = (root) NOPASSWD: //usr/bin/arp-scan
+	`user host = (root) NOPASSWD: //usr/bin/arp-scan`
 
 * Set the SUID bit on the `arp-scan` bin:
 
-	sudo chmod u+s /usr/bin/arp-scan
+		sudo chmod u+s /usr/bin/arp-scan`
 
 * Run your Ruby code as root (I wouldn't do this)
 
