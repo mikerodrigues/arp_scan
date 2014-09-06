@@ -10,7 +10,7 @@ module ARPScan
 
     def self.process(string)
       report = {}
-      report[:hosts] = string.scan(Host_Entry_Regex)
+      report[:hosts] = string.scan(Host_Entry_Regex).map {|entry| Host.new(*entry)}
       report[:interface],
       report[:datalink] = string.scan(Interface_Summary_Regex)[0]
       report[:version],
@@ -18,7 +18,6 @@ module ARPScan
       report[:scan_time],
       report[:scan_rate],
       report[:reply_count] = string.scan(Received_Summary_Regex)[0]
-      hosts = report[:hosts].map {|entry| Host.new(*entry)}
       ScanReport.new(report)
     end
   end

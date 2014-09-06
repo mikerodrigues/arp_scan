@@ -31,8 +31,14 @@ This code is untested and will hopefully be refactored soon.
 
 Add this line to your application's Gemfile:
 
+From GitHub:
 ```ruby
 gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
+```
+
+From RubyGems:
+```ruby
+gem 'arp_scan'
 ```
 
 And then execute:
@@ -52,26 +58,29 @@ metainfo about the scan itself.
 
 Scanning is easy:
 
-    require 'arp_scan'
+```ruby
+require 'arp_scan'
 
-    report = ARPScan('--localnet')
+report = ARPScan('--localnet')
 
-    report.datalink 	=> "EN10MB (Ethernet)",
-    report.interface 	=> "eth0"
-    report.range_size 	=> "256"
-    report.reply_count 	=> "2"
-    report.scan_rate 	=> "169.99" # hosts/sec
-    report.scan_time 	=> "1.586" # seconds
-    report.version 	=> "1.8.1" # arp-scan version
+report.datalink 	=> "EN10MB (Ethernet)"
+report.interface 	=> "eth0"
+report.range_size 	=> 256
+report.reply_count 	=> 2
+report.scan_rate 	=> 169.99 # hosts/sec
+report.scan_time 	=> 1.586 # seconds
+report.version 		=> "1.8.1" # arp-scan version
+```
 
 Each `ScanReport` also holds zero or more `Host` objects representing founds
 hosts:
 
-    first_host = report.hosts.first
-    first_host.ip_addr 	=> '10.0.0.1'
-    first_host.mac 	=> '00:11:22:33:44:55'
-    first_host.oui 	=> "NIC Manufacturer"
-
+```ruby
+first_host = report.hosts.first
+first_host.ip_addr 	=> '10.0.0.1'
+first_host.mac 	=> '00:11:22:33:44:55'
+first_host.oui 	=> "NIC Manufacturer"
+```
 
 
 
