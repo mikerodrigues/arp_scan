@@ -9,8 +9,8 @@ module ARPScan
       @datalink = hash[:datalink]
       @version = hash[:version]
       @range_size = Integer(hash[:range_size])
-      @scan_time = Integer(hash[:scan_time])
-      @scan_rate = Integer(hash[:version])
+      @scan_time = Float(hash[:scan_time])
+      @scan_rate = Float(hash[:scan_rate])
       @reply_count = Integer(hash[:reply_count])
     end
   end

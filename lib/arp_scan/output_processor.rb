@@ -12,11 +12,12 @@ module ARPScan
       report = {}
       report[:hosts] = string.scan(Host_Entry_Regex)
       report[:interface],
-      report[:datalink] = string.scan(Interface_Summary_Regex)
+      report[:datalink] = string.scan(Interface_Summary_Regex)[0]
+      report[:version],
       report[:range_size],
       report[:scan_time],
       report[:scan_rate],
-      report[:reply_count] = string.scan(Received_Summary_Regex)
+      report[:reply_count] = string.scan(Received_Summary_Regex)[0]
       hosts = report[:hosts].map {|entry| Host.new(*entry)}
       ScanReport.new(report)
     end
