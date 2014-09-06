@@ -14,7 +14,7 @@ options but be sure to understand what you're doing before you do it:
 
 * Set the SUID bit on the `arp-scan` bin:
 
-		sudo chmod u+s /usr/bin/arp-scan`
+	 `sudo chmod u+s /usr/bin/arp-scan`
 
 * Run your Ruby code as root (I wouldn't do this)
 
@@ -33,12 +33,12 @@ Add this line to your application's Gemfile:
 
 From GitHub:
 ```ruby
-$ gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
+gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
 ```
 
 From RubyGems:
 ```ruby
-$ gem 'arp_scan'
+gem 'arp_scan'
 ```
 
 And then execute:
