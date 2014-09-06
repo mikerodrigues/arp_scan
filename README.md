@@ -33,12 +33,12 @@ Add this line to your application's Gemfile:
 
 From GitHub:
 ```ruby
-gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
+$ gem 'arp_scan', :git => 'git://github.com/mikerodrigues/arp_scan.git'
 ```
 
 From RubyGems:
 ```ruby
-gem 'arp_scan'
+$ gem 'arp_scan'
 ```
 
 And then execute:
