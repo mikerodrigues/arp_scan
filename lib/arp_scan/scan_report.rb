@@ -15,7 +15,13 @@ module ARPScan
     end
 
     def to_array
-      self.instance_variables.map {|var| self.instance_variable_get var}
+      self.instance_variables.map do |var|
+        if var == :@hosts
+          self.instance_variable_get(var).map {|host| host.to_array}
+        else
+          self.instance_variable_get(var)
+        end
+      end
     end
 
     def to_hash
