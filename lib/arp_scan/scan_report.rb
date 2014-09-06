@@ -1,8 +1,7 @@
 module ARPScan
   class ScanReport
 
-    attr_reader :hosts
-    attr_reader :interface, :datalink, :version, :range_size, :scan_time, :scan_rate, :reply_count
+    attr_reader :hosts,:interface, :datalink, :version, :range_size, :scan_time, :scan_rate, :reply_count
 
     def initialize(hash)
       @hosts = hash[:hosts]
