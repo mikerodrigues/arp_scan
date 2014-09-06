@@ -1,4 +1,6 @@
 require_relative './host'
+require_relative './scan_report'
+
 module ARPScan
   module OutputProcessor
 
@@ -9,19 +11,14 @@ module ARPScan
     def self.process(string)
       report = {}
       report[:hosts] = string.scan(Host_Entry_Regex)
-      report[:interface_summary] = string.match(Interface_Summary_Regex)
-      report[:summary] = string.match(Received_Summary_Regex)
+      report[:interface],
+      report[:datalink] = string.scan(Interface_Summary_Regex)
+      report[:range_size],
+      report[:scan_time],
+      report[:scan_rate],
+      report[:reply_count] = string.scan(Received_Summary_Regex)
       hosts = report[:hosts].map {|entry| Host.new(*entry)}
-      ScanReport.new(
-        hosts: hosts,
-        interface: report[:interface_summary][:interface],
-        datalink: report[:interface_summary][:datalink],
-        version: report[:summary][:version],
-        range_size: report[:summary][:range_size],
-        scan_time: report[:summary][:scan_time],
-        scan_rate: report[:summary][:scan_rate],
-        reply_count: report[:summary][:reply_count]
-      )
+      ScanReport.new(report)
     end
   end
 end
