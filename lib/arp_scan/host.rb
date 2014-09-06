@@ -21,10 +21,5 @@ module ARPScan
         @oui
       ]
     end
-
-    def ==(other)
-      self.to_array == other.to_array ? true : false
-    end
-
   end
 end
