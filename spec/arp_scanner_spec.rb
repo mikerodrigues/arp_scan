@@ -1,11 +1,12 @@
 require '../lib/arp_scan'
 require_relative './spec_helper'
 
-RSpec.describe ARPScan::ARPScanner do
-
-  it "has a #scan method to pass arp-scan arguments to as a string" do
-    expect(ARPScan::ARPScanner.scan('-l').class).to eq(ARPScan::ScanReport)
+module ARPScan
+  describe ARPScanner do
+    describe "#scan" do
+      it "accepts arp-scan arguments as a string" do
+        expect(ARPScanner.scan('-l').class).to eq(ScanReport)
+      end
+    end
   end
-  
 end
-
