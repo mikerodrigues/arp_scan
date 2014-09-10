@@ -24,7 +24,7 @@ should probably go with the `/etc/sudoers` method.
 
 ## Notes
 
-This code is untested and will hopefully be refactored soon.
+This code is partially tested.
 
 
 ## Installation

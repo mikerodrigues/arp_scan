@@ -1,4 +1,5 @@
 require '../lib/arp_scan'
+require_relative './spec_helper.rb'
 
 RSpec.describe ARPScan do
   report = ARPScan('-l')

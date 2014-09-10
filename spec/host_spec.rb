@@ -1,4 +1,5 @@
 require '../lib/arp_scan'
+require_relative './spec_helper'
 
 RSpec.describe ARPScan::Host do
 
