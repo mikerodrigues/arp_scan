@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["mikebrodrigues@gmail.com"]
   spec.summary       = %q{A ruby wrapper for the arp-scan utility.}
   spec.description   = %q{Easily use the arp-scan utility from within your ruby programs.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/mikerodrigues/arp_scan"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
