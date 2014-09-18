@@ -24,8 +24,8 @@ should probably go with the `/etc/sudoers` method.
 
 ## Notes
 
-This code is partially tested.
-
+There are some tests now, but output containing host names instead of IP
+addresses will not be properly parsed. This might be fixed soon.
 
 ## Installation
 
