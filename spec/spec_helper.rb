@@ -1,1 +1,1 @@
-require 'arp_scan'
+require '../lib/arp_scan'
