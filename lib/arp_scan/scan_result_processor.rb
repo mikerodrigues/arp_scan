@@ -7,10 +7,17 @@ module ARPScan
   #
   module ScanResultProcessor
 
-    # Regexes for parsing the arp-scan output.
+    # Regex to capture IP address, MAC address, and OUI information
     #
     Host_Entry_Regex = /(\d+.\d+.\d+.\d+)\s(\w\w:\w\w:\w\w:\w\w:\w\w:\w\w)\s(.*)/
+   
+    # Regex to capture interface and datalink
+    #
     Interface_Summary_Regex = /Interface: (?<interface>.+), datalink type: (?<datalink>.*$)/
+
+    # Regex to capture arp-scan version, scan range size, scan time, scan rate,
+    # and the number of responding hosts.
+    #
     Scan_Summary_Regex = /Ending arp-scan (?<version>.*): (?<range_size>.*) hosts scanned in (?<scan_time>.*) seconds \((?<scan_rate>.*) hosts\/sec\). (?<reply_count>.*) responded/
 
     # This method does the actual processing of the arp-scan result string. It
