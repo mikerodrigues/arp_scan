@@ -1,5 +1,8 @@
 # ARPScan
 
+[![arp_scan API
+Documentation](https://www.omniref.com/ruby/gems/arp_scan.png)](https://www.omniref.com/ruby/gems/arp_scan)
+
 Very simple wrapper for using and parsing output from `arp-scan`.
 
 You will need to make sure `arp-scan` is installed. See the arp-scan homepage at http://www.nta-monitor.com/tools/arp-scan/
