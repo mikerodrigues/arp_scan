@@ -5,7 +5,36 @@ module ARPScan
   #
   class ScanReport
 
-    attr_reader :hosts, :interface, :datalink, :version, :range_size, :scan_time, :scan_rate, :reply_count
+    # Array of Host objects.
+    #
+    attr_reader :hosts
+
+    # Name of the interface used for the scan.
+    #
+    attr_reader :interface
+
+    # Information about the interface type.
+    #
+    attr_reader :datalink
+
+    # `arp-scan` version number.
+    #
+    attr_reader :version
+
+    # Size of the scan range ( # of hosts scanned ).
+    #
+    attr_reader :range_size
+
+    # Duration of the scan in seconds, returns a Float.
+    #
+    attr_reader :scan_time
+
+    # The rate of the scan in hosts per second, returns a Float.
+    #
+    attr_reader :scan_rate
+
+    # The number of hosts that replied to the scan, returns a Fixnum
+    attr_reader :reply_count
 
     # Create a new scan report, passing in every attribute. The best way to do
     # this is with the ScanResultProcessor module.

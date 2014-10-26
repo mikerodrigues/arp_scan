@@ -2,7 +2,18 @@ module ARPScan
   # Abstracts replying hosts from the arp-scan output.
   #
   class Host
-    attr_reader :ip_addr, :mac, :oui
+
+    # The IP address of the host.
+    #
+    attr_reader :ip_addr
+
+    # The MAC address of the host.
+    #
+    attr_reader :mac
+
+    # OUI information about the host.
+    #
+    attr_reader :oui
 
     # Create a new hsot. IP address, MAC address and OUI information are
     # expected.
