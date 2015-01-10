@@ -11,7 +11,6 @@ module ARPScan
         expect(report.class).to eq(ARPScan::ScanReport)
       end
 
-
       it "builds an array of Host objects" do
         expect(report.hosts[0].class).to eq(ARPScan::Host)
       end
