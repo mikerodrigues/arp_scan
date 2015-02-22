@@ -11,7 +11,8 @@ module ARPScan
       :range_size => 256,
       :scan_time => 1.503,
       :scan_rate => 170.33,
-      :reply_count => 1
+      :reply_count => 1,
+      :arguments => '-l'
     }
 
     scan_report = ScanReport.new(report_hash)
@@ -62,6 +63,12 @@ module ARPScan
     describe "#reply_count" do
       it "returns the number of hosts that responded" do
         expect(scan_report.reply_count).to eq(1)
+      end
+    end
+
+    describe "#arguments" do
+      it "returns the argument string used to scan" do
+        expect(scan_report.arguments).to eq('-l')
       end
     end
   end

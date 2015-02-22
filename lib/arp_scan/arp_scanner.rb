@@ -18,7 +18,7 @@ module ARPScan
           return exe if File.executable?(exe) && !File.directory?(exe)
         }
       end
-      return nil
+      raise 'arp-scan binary not found, make sure it is installed'
     end
 
     # This method runs the actual scan by passing the arguments to the arp-scan
@@ -27,7 +27,7 @@ module ARPScan
     #
     def self.scan(argument_string = nil)
       result_string = `#{which 'arp-scan'} #{argument_string}`
-      ScanResultProcessor.process(result_string)
+      ScanResultProcessor.process(result_string, argument_string)
     end
 
     private_class_method :which

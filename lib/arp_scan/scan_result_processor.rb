@@ -24,7 +24,7 @@ module ARPScan
     # uses the Regexes to capture data then passes the results to ScanRepor.new
     # to return a ScanReport object.
     #
-    def self.process(string)
+    def self.process(string, arguments)
       results = {}
       results[:hosts] = string.scan(Host_Entry_Regex).map {|entry| Host.new(*entry)}
       results[:interface],
@@ -34,6 +34,7 @@ module ARPScan
       results[:scan_time],
       results[:scan_rate],
       results[:reply_count] = string.scan(Scan_Summary_Regex)[0]
+      results[:arguments] = arguments
       ScanReport.new(results)
     end
   end

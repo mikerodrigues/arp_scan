@@ -3,8 +3,9 @@ require_relative './spec_helper'
 module ARPScan
   describe ScanResultProcessor do
 
+    argument_string = '-l'
     report_string = File.read './test_output.txt'
-    report = ARPScan::ScanResultProcessor.process(report_string)
+    report = ARPScan::ScanResultProcessor.process(report_string, argument_string)
 
     describe "#process" do
       it "processes arp-scan output to create a ScanReport object" do
@@ -41,6 +42,10 @@ module ARPScan
 
       it "parses the number of hosts that responded to the scan" do
         expect(report.reply_count).to eq(1)
+      end
+
+      it "includes the argument string in the report" do
+        expect(report.arguments).to eq('-l')
       end
     end
   end
