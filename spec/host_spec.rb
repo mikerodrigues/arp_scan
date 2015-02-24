@@ -3,7 +3,8 @@ require_relative './spec_helper'
 module ARPScan
   describe Host do
 
-    host = Host.new('10.0.0.1', '00:11:22:33:44:55', "NIC Manufacturer")
+    host = Host.new('10.0.0.1', '00:11:22:33:44:55', "NIC Manufacturer", "")
+    host2 = Host.new('10.0.0.2', '00:11:22:33:44:66', "NIC Manufacturer", "000000000000000000000000000000000000")
 
     describe "#ip_addr" do
       it "returns the host's IP address" do
@@ -22,6 +23,15 @@ module ARPScan
         expect(host.oui).to eq('NIC Manufacturer')
       end
     end
-
+    
+    describe "#padding" do
+      it "returns padding data if available" do
+        expect(host2.padding).to eq('000000000000000000000000000000000000')
+      end
+      
+      it "returns empty string if no padding data is found" do
+        expect(host.padding).to eq('')
+      end
+    end
   end
 end

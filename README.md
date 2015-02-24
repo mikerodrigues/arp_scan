@@ -28,7 +28,8 @@ should probably go with the `/etc/sudoers` method.
 ## Notes
 
 There are some tests now, but output containing host names instead of IP
-addresses will not be properly parsed. This might be fixed soon.
+addresses will not be properly parsed. This might be fixed soon. if you have a
+scan that this gem fails to parse, send me your scan output.
 
 ## Installation
 

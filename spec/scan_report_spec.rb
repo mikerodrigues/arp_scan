@@ -8,11 +8,23 @@ module ARPScan
       :interface => "eth0",
       :datalink => "EN10MB (Ethernet)",
       :version => "1.8.1",
-      :range_size => 256,
+      :range_size => 10,
       :scan_time => 1.503,
-      :scan_rate => 170.33,
+      :scan_rate => 6.65,
       :reply_count => 1,
-      :arguments => '-l'
+      :arguments => '--verbose --verbose --verbose 10.0.0.0-10.0.0.10',
+      :host_list => [
+        Target.new(*["1", "10.0.0.0"]),
+        Target.new(*["2", "10.0.0.1"]),
+        Target.new(*["3", "10.0.0.2"]),
+        Target.new(*["4", "10.0.0.3"]),
+        Target.new(*["5", "10.0.0.4"]),
+        Target.new(*["6", "10.0.0.5"]),
+        Target.new(*["7", "10.0.0.6"]),
+        Target.new(*["8", "10.0.0.7"]),
+        Target.new(*["9", "10.0.0.8"]),
+        Target.new(*["10", "10.0.0.9"])
+      ]
     }
 
     scan_report = ScanReport.new(report_hash)
@@ -44,7 +56,7 @@ module ARPScan
 
     describe "#range_size" do
       it "returns the size of the range of scanned IPs" do
-        expect(scan_report.range_size).to eq(256)
+        expect(scan_report.range_size).to eq(10)
       end
     end
 
@@ -56,7 +68,7 @@ module ARPScan
 
     describe "#scan_rate" do
       it "returns the scan rate in hosts per second" do
-        expect(scan_report.scan_rate).to eq(170.33)
+        expect(scan_report.scan_rate).to eq(6.65)
       end
     end
 
@@ -68,8 +80,19 @@ module ARPScan
 
     describe "#arguments" do
       it "returns the argument string used to scan" do
-        expect(scan_report.arguments).to eq('-l')
+        expect(scan_report.arguments).to eq('--verbose --verbose --verbose 10.0.0.0-10.0.0.10')
       end
     end
+
+    describe "#host_list" do
+      it "returns a list of Target objects representing hosts to scan" do
+        expect(scan_report.host_list.first.class).to eq(Target)
+      end
+
+      it "its count should match #range_size" do
+        expect(scan_report.host_list.count).to eq(scan_report.range_size)
+      end
+    end
+
   end
 end

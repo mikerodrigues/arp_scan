@@ -39,6 +39,9 @@ module ARPScan
     # The argument string passed to ARPScan
     attr_reader :arguments
 
+    # The list of target hosts to be scanned
+    attr_reader :host_list
+
     # Create a new scan report, passing in every attribute. The best way to do
     # this is with the ScanResultProcessor module.
     #
@@ -52,6 +55,7 @@ module ARPScan
       @scan_rate = Float(hash[:scan_rate])
       @reply_count = Integer(hash[:reply_count])
       @arguments = hash[:arguments]
+      @host_list = hash[:host_list]
     end
 
     # Returns an array representation of the ScanReport. Metadata about the
@@ -79,7 +83,8 @@ module ARPScan
         :scan_time => @scan_time,
         :scan_rate => @scan_rate,
         :reply_count => @reply_count,
-        :arguments => @arguments
+        :arguments => @arguments,
+        :host_list => @host_list
       }
     end
 

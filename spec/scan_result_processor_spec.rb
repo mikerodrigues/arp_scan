@@ -4,8 +4,9 @@ module ARPScan
   describe ScanResultProcessor do
 
     argument_string = '-l'
-    report_string = File.read './test_output.txt'
-    report = ARPScan::ScanResultProcessor.process(report_string, argument_string)
+    report_string = File.read(File.dirname(__FILE__) + "/test_output.txt")
+    stderr = ''
+    report = ARPScan::ScanResultProcessor.process(report_string, stderr, argument_string)
 
     describe "#process" do
       it "processes arp-scan output to create a ScanReport object" do
