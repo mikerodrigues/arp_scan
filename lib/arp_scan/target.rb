@@ -3,15 +3,15 @@ module ARPScan
 
     # Target entry number in host list
     #
-    attr_accessor :entry
+    attr_reader :entry
 
     # Target IP
     #
-    attr_accessor :ip
+    attr_reader :ip_addr
 
-    def initialize(entry, ip)
-      @entry = entry
-      @ip = ip
+    def initialize(entry, ip_addr)
+      @entry = Integer(entry)
+      @ip_addr = ip_addr
     end
   end
 end
