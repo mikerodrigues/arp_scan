@@ -13,5 +13,21 @@ module ARPScan
       @entry = Integer(entry)
       @ip_addr = ip_addr
     end
+
+    # Returns a hash representation of the Target object.
+    #
+    def to_hash
+      { :entry => @entry,
+        :ip_addr=> @ip_addr
+      }
+    end
+
+    # Returns a array representation of the Target object.
+    #
+    def to_array
+      [ @entry,
+        @ip_addr
+      ]
+    end
   end
 end

@@ -63,7 +63,7 @@ module ARPScan
     #
     def to_array
       self.instance_variables.map do |var|
-        if var == :@hosts
+        if var == :@hosts || :@hosts_list
           self.instance_variable_get(var).map {|host| host.to_array}
         else
           self.instance_variable_get(var)
@@ -84,7 +84,7 @@ module ARPScan
         :scan_rate => @scan_rate,
         :reply_count => @reply_count,
         :arguments => @arguments,
-        :host_list => @host_list
+        :host_list => @host_list.map {|host| host.to_hash}
       }
     end
 
