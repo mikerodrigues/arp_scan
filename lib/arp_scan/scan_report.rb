@@ -58,19 +58,6 @@ module ARPScan
       @host_list = hash[:host_list]
     end
 
-    # Returns an array representation of the ScanReport. Metadata about the
-    # scan, and an array of Host arrays comprise the array.
-    #
-    def to_array
-      self.instance_variables.map do |var|
-        if var == :@hosts || :@hosts_list
-          self.instance_variable_get(var).map {|host| host.to_array}
-        else
-          self.instance_variable_get(var)
-        end
-      end
-    end
-
     # Returns a hash representation of the ScanReport. Metadata about the scan,
     # and array of Host hashes comprise the hash.
     #

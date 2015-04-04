@@ -23,15 +23,27 @@ module ARPScan
         expect(host.oui).to eq('NIC Manufacturer')
       end
     end
-    
+
     describe "#padding" do
       it "returns padding data if available" do
         expect(host2.padding).to eq('000000000000000000000000000000000000')
       end
-      
+
       it "returns empty string if no padding data is found" do
         expect(host.padding).to eq('')
       end
     end
+
+    describe "#to_array" do
+      it "returns an array of host data" do
+        expect(host.to_array).to eq(["10.0.0.1", "00:11:22:33:44:55", "NIC Manufacturer", ""])
+        expect(host.to_array).to eq(["10.0.0.1", "00:11:22:33:44:55", "NIC Manufacturer", ""])
+      end
+
+      it "returns an array with 4 elements" do
+        expect(host.to_array.count).to eq(4)
+      end
+    end
+
   end
 end

@@ -94,5 +94,32 @@ module ARPScan
       end
     end
 
+    describe "#to_hash" do
+      it "returns a hash of the report" do
+        expect(scan_report.to_hash).to eq(
+          {:hosts=>[{:ip_addr=>"10.0.0.1", :mac=>"00:11:22:33:44:55", :oui=>"NIC Manufacturer", :padding=>nil}],
+           :interface=>"eth0",
+           :datalink=>"EN10MB (Ethernet)",
+           :version=>"1.8.1",
+           :range_size=>10,
+           :scan_time=>1.503,
+           :scan_rate=>6.65,
+           :reply_count=>1,
+           :arguments=>"--verbose --verbose --verbose 10.0.0.0-10.0.0.10",
+           :host_list=>
+           [{:entry=>1, :ip_addr=>"10.0.0.0"},
+            {:entry=>2, :ip_addr=>"10.0.0.1"},
+            {:entry=>3, :ip_addr=>"10.0.0.2"},
+            {:entry=>4, :ip_addr=>"10.0.0.3"},
+            {:entry=>5, :ip_addr=>"10.0.0.4"},
+            {:entry=>6, :ip_addr=>"10.0.0.5"},
+            {:entry=>7, :ip_addr=>"10.0.0.6"},
+            {:entry=>8, :ip_addr=>"10.0.0.7"},
+            {:entry=>9, :ip_addr=>"10.0.0.8"},
+            {:entry=>10, :ip_addr=>"10.0.0.9"}]}
+        )
+      end
+    end
+
   end
 end

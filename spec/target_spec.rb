@@ -18,6 +18,12 @@ module ARPScan
         expect(target.ip_addr).to eq('10.0.0.0')
       end
     end
+
+    describe "#to_array" do
+      it "returns the target data in an array" do
+        expect(target.to_array).to eq([1, '10.0.0.0'])
+      end
+    end
   
   end
 end
