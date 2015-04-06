@@ -14,5 +14,7 @@ module ARPScan; end
 # supported.
 #
 def ARPScan(argument_string = nil)
-  ARPScan::ARPScanner.scan argument_string
+  unless argument_string.nil?
+    ARPScan::ARPScanner.scan(argument_string)
+  end
 end
