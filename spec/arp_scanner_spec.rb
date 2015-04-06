@@ -4,11 +4,11 @@ module ARPScan
   describe ARPScanner do
     describe "#scan" do
       it "accepts arp-scan arguments as a string" do
-    #    expect(ARPScanner.scan('-l').class).to eq(ScanReport)
+        #    expect(ARPScanner.scan('-l').class).to eq(ScanReport)
       end
 
       it "raises an error if passed invalid scan arguments" do
-    #    expect { ARPScanner.scan('invalid arguments')}.to raise_error
+        #    expect { ARPScanner.scan('invalid arguments')}.to raise_error
       end
     end
 
@@ -23,5 +23,4 @@ module ARPScan
     end
 
   end
-end
 end
