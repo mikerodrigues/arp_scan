@@ -1,0 +1,3 @@
+WARNING: get_host_address failed for "invalid": Name or service not known - target ignored
+WARNING: get_host_address failed for "arguments": Name or service not known - target ignored
+ERROR: No hosts to process.

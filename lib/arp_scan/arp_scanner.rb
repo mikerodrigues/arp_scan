@@ -19,7 +19,7 @@ module ARPScan
           return exe if File.executable?(exe) && !File.directory?(exe)
         }
       end
-      raise 'arp-scan binary not found, make sure it is installed'
+      raise "#{cmd} not found, make sure it is installed"
     end
 
     # This method runs the actual scan by passing the arguments to the arp-scan
