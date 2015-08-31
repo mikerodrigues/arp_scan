@@ -8,7 +8,7 @@ module ARPScan
     stderr = ''
     report = ARPScan::ScanResultProcessor.process(report_string, stderr, argument_string)
 
-    describe "#process" do
+    describe ".process" do
       it "processes arp-scan output to create a ScanReport object" do
         expect(report.class).to eq(ARPScan::ScanReport)
       end

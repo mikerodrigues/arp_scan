@@ -2,7 +2,7 @@ require_relative './spec_helper'
 
 module ARPScan
   describe ARPScanner do
-    describe "#scan" do
+    describe ".scan" do
       it "accepts arp-scan arguments as a string" do
         #    expect(ARPScanner.scan('-l').class).to eq(ScanReport)
       end
@@ -12,7 +12,7 @@ module ARPScan
       end
     end
 
-    describe "#which" do
+    describe ".which" do
       it "returns a path for the binary if found" do
         expect(ARPScanner.send(:which, 'ping').class).to eq(String)
       end
