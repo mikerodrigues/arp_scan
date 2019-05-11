@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/arp_scan.svg)](http://badge.fury.io/rb/arp_scan)
 <a href="https://codeclimate.com/github/mikerodrigues/arp_scan"><img src="https://codeclimate.com/github/mikerodrigues/arp_scan/badges/gpa.svg" /></a>
 
+
 Very simple wrapper for using and parsing output from `arp-scan`.
 
 You will need to make sure `arp-scan` is installed. See the arp-scan homepage at http://www.nta-monitor.com/tools/arp-scan/
