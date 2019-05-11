@@ -1,3 +1,4 @@
+require 'open3'
 require_relative './scan_result_processor'
 
 module ARPScan
@@ -18,7 +19,7 @@ module ARPScan
           return exe if File.executable?(exe) && !File.directory?(exe)
         }
       end
-      raise 'arp-scan binary not found, make sure it is installed'
+      raise "#{cmd} not found, make sure it is installed"
     end
 
     # This method runs the actual scan by passing the arguments to the arp-scan
@@ -26,8 +27,12 @@ module ARPScan
     # is returned.
     #
     def self.scan(argument_string = nil)
-      result_string = `#{which 'arp-scan'} #{argument_string}`
-      ScanResultProcessor.process(result_string, argument_string)
+      command = "#{which 'arp-scan'} #{argument_string}"
+      stdout, stderr, status = Open3.capture3(command)
+      unless status.to_i == 0
+        raise stderr
+      end
+      ScanResultProcessor.process(stdout, stderr, argument_string)
     end
 
     private_class_method :which

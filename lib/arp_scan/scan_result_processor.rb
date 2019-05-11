@@ -9,7 +9,7 @@ module ARPScan
 
     # Regex to capture IP address, MAC address, and OUI information
     #
-    Host_Entry_Regex = /(\d+.\d+.\d+.\d+)\s(\w\w:\w\w:\w\w:\w\w:\w\w:\w\w)\s(.*)/
+    Host_Entry_Regex = /^(\d+.\d+.\d+.\d+)\t(\w\w:\w\w:\w\w:\w\w:\w\w:\w\w)\t([^\t\n$]*)(?:\tPadding=)?(.*)?$/
    
     # Regex to capture interface and datalink
     #
@@ -20,21 +20,27 @@ module ARPScan
     #
     Scan_Summary_Regex = /Ending arp-scan (?<version>.*): (?<range_size>.*) hosts scanned in (?<scan_time>.*) seconds \((?<scan_rate>.*) hosts\/sec\). (?<reply_count>.*) responded/
 
+    # Regex to capture the Hosts List that is outputted if triple-verbosity is
+    # enabled.
+    #
+    Host_List_Entry_Regex = /^(?<entry>\d+)\s+(?<ip>\d+.\d+.\d+.\d+)$/
+
     # This method does the actual processing of the arp-scan result string. It
     # uses the Regexes to capture data then passes the results to ScanRepor.new
     # to return a ScanReport object.
     #
-    def self.process(string, arguments)
+    def self.process(stdout, stderr, arguments)
       results = {}
-      results[:hosts] = string.scan(Host_Entry_Regex).map {|entry| Host.new(*entry)}
+      results[:hosts] = stdout.scan(Host_Entry_Regex).map {|entry| Host.new(*entry)}
       results[:interface],
-      results[:datalink] = string.scan(Interface_Summary_Regex)[0]
+      results[:datalink] = stdout.scan(Interface_Summary_Regex)[0]
       results[:version],
       results[:range_size],
       results[:scan_time],
       results[:scan_rate],
-      results[:reply_count] = string.scan(Scan_Summary_Regex)[0]
+      results[:reply_count] = stdout.scan(Scan_Summary_Regex)[0]
       results[:arguments] = arguments
+      results[:host_list] = stdout.scan(Host_List_Entry_Regex).map {|target| Target.new(*target)}
       ScanReport.new(results)
     end
   end

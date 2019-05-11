@@ -2,8 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/arp_scan.svg)](http://badge.fury.io/rb/arp_scan)
 <a href="https://codeclimate.com/github/mikerodrigues/arp_scan"><img src="https://codeclimate.com/github/mikerodrigues/arp_scan/badges/gpa.svg" /></a>
-[![arp_scan API
-Documentation](https://www.omniref.com/ruby/gems/arp_scan.png)](https://www.omniref.com/ruby/gems/arp_scan)
+
 
 Very simple wrapper for using and parsing output from `arp-scan`.
 
@@ -30,7 +29,8 @@ should probably go with the `/etc/sudoers` method.
 ## Notes
 
 There are some tests now, but output containing host names instead of IP
-addresses will not be properly parsed. This might be fixed soon.
+addresses will not be properly parsed. This might be fixed soon. if you have a
+scan that this gem fails to parse, send me your scan output.
 
 ## Installation
 

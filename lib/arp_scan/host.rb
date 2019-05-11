@@ -15,13 +15,18 @@ module ARPScan
     #
     attr_reader :oui
 
+    # Padding data, if running a double-verbose scan.
+    #
+    attr_reader :padding
+
     # Create a new hsot. IP address, MAC address and OUI information are
     # expected.
     #
-    def initialize(ip_addr, mac, oui)
+    def initialize(ip_addr, mac, oui, padding = nil)
       @ip_addr = ip_addr
       @mac = mac
       @oui = oui
+      @padding = padding
     end
 
     # Returns a hash representation of the Host object.
@@ -29,7 +34,8 @@ module ARPScan
     def to_hash
       { :ip_addr => @ip_addr,
         :mac     => @mac,
-        :oui      => @oui
+        :oui      => @oui,
+        :padding  => @padding
       }
     end
 
@@ -38,7 +44,8 @@ module ARPScan
     def to_array
       [ @ip_addr,
         @mac,
-        @oui
+        @oui,
+        @padding
       ]
     end
   end

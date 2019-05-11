@@ -3,6 +3,7 @@ require_relative "./arp_scan/arp_scanner"
 require_relative "./arp_scan/scan_report"
 require_relative "./arp_scan/scan_result_processor"
 require_relative "./arp_scan/host"
+require_relative "./arp_scan/target"
 
 # This module just acts as a namespace for the gem.
 #
@@ -13,5 +14,7 @@ module ARPScan; end
 # supported.
 #
 def ARPScan(argument_string = nil)
-  ARPScan::ARPScanner.scan argument_string
+  unless argument_string.nil?
+    ARPScan::ARPScanner.scan(argument_string)
+  end
 end
