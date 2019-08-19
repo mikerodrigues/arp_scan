@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './scan_result_processor'
 
 module ARPScan
@@ -13,10 +15,10 @@ module ARPScan
     def self.which(cmd)
       exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
       ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
-        exts.each { |ext|
+        exts.each do |ext|
           exe = File.join(path, "#{cmd}#{ext}")
           return exe if File.executable?(exe) && !File.directory?(exe)
-        }
+        end
       end
       raise 'arp-scan binary not found, make sure it is installed'
     end
@@ -33,4 +35,3 @@ module ARPScan
     private_class_method :which
   end
 end
-

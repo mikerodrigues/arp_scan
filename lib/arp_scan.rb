@@ -1,8 +1,10 @@
-require_relative "./arp_scan/version"
-require_relative "./arp_scan/arp_scanner"
-require_relative "./arp_scan/scan_report"
-require_relative "./arp_scan/scan_result_processor"
-require_relative "./arp_scan/host"
+# frozen_string_literal: true
+
+require_relative './arp_scan/version'
+require_relative './arp_scan/arp_scanner'
+require_relative './arp_scan/scan_report'
+require_relative './arp_scan/scan_result_processor'
+require_relative './arp_scan/host'
 
 # This module just acts as a namespace for the gem.
 #

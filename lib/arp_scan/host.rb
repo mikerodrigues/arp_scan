@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module ARPScan
   # Abstracts replying hosts from the arp-scan output.
   #
   class Host
-
     # The IP address of the host.
     #
     attr_reader :ip_addr
@@ -27,19 +28,17 @@ module ARPScan
     # Returns a hash representation of the Host object.
     #
     def to_hash
-      { :ip_addr => @ip_addr,
-        :mac     => @mac,
-        :oui      => @oui
-      }
+      { ip_addr: @ip_addr,
+        mac: @mac,
+        oui: @oui }
     end
 
     # Returns an array representation of the Host object.
     #
     def to_array
-      [ @ip_addr,
-        @mac,
-        @oui
-      ]
+      [@ip_addr,
+       @mac,
+       @oui]
     end
   end
 end

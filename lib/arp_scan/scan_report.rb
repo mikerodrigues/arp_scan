@@ -1,10 +1,10 @@
-module ARPScan
+# frozen_string_literal: true
 
+module ARPScan
   # This class abstracts the string output from arp-scan into an Object. A
   # ScanReports are usually created through the ScanResultProcessor module.
   #
   class ScanReport
-
     # Array of Host objects.
     #
     attr_reader :hosts
@@ -58,11 +58,11 @@ module ARPScan
     # scan, and an array of Host arrays comprise the array.
     #
     def to_array
-      self.instance_variables.map do |var|
+      instance_variables.map do |var|
         if var == :@hosts
-          self.instance_variable_get(var).map {|host| host.to_array}
+          instance_variable_get(var).map(&:to_array)
         else
-          self.instance_variable_get(var)
+          instance_variable_get(var)
         end
       end
     end
@@ -71,17 +71,15 @@ module ARPScan
     # and array of Host hashes comprise the hash.
     #
     def to_hash
-      { :hosts => @hosts.map {|host| host.to_hash},
-        :interface => @interface,
-        :datalink => @datalink,
-        :version => @version,
-        :range_size => @range_size,
-        :scan_time => @scan_time,
-        :scan_rate => @scan_rate,
-        :reply_count => @reply_count,
-        :arguments => @arguments
-      }
+      { hosts: @hosts.map(&:to_hash),
+        interface: @interface,
+        datalink: @datalink,
+        version: @version,
+        range_size: @range_size,
+        scan_time: @scan_time,
+        scan_rate: @scan_rate,
+        reply_count: @reply_count,
+        arguments: @arguments }
     end
-
   end
 end
