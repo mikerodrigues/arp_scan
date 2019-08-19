@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Michael Rodrigues']
   spec.email         = ['mikebrodrigues@gmail.com']
   spec.summary       = 'A ruby wrapper for the arp-scan utility.'
-  spec.description   = 'Easily use the arp-scan utility from within your ruby programs.'
+  spec.description   = 'Use the arp-scan utility from your ruby programs.'
   spec.homepage      = 'https://github.com/mikerodrigues/arp_scan'
   spec.license       = 'MIT'
 
