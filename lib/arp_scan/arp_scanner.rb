@@ -7,15 +7,25 @@ module ARPScan
   # delegates the parsing of the scan results to the ScanResultProcessor module.
   #
   module ARPScanner
+
+    # get array of file extensions, relevant for Windows
+    def self.exts
+      ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+    end
+
+    # get array of paths
+    def self.paths
+      ENV['PATH'].split(File::PATH_SEPARATOR)
+    end
+
     # I got this method from: http://stackoverflow.com/questions/2108727
     # Cross-platform way of finding an executable in the $PATH.
     #
     #   which('ruby') #=> /usr/bin/ruby
     #
     def self.which(cmd)
-      exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
-      ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
-        exts.each do |ext|
+      self.paths.each do |path|
+        self.exts.each do |ext|
           exe = File.join(path, "#{cmd}#{ext}")
           return exe if File.executable?(exe) && !File.directory?(exe)
         end
@@ -32,6 +42,6 @@ module ARPScan
       ScanResultProcessor.process(result_string, argument_string)
     end
 
-    private_class_method :which
+    private_class_method :which, :exts, :paths
   end
 end
