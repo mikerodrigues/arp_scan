@@ -7,7 +7,6 @@ module ARPScan
   # delegates the parsing of the scan results to the ScanResultProcessor module.
   #
   module ARPScanner
-
     # get array of file extensions, relevant for Windows
     def self.exts
       ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
@@ -24,8 +23,8 @@ module ARPScan
     #   which('ruby') #=> /usr/bin/ruby
     #
     def self.which(cmd)
-      self.paths.each do |path|
-        self.exts.each do |ext|
+      paths.each do |path|
+        exts.each do |ext|
           exe = File.join(path, "#{cmd}#{ext}")
           return exe if File.executable?(exe) && !File.directory?(exe)
         end
