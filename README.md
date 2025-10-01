@@ -15,10 +15,7 @@ raw socket privs it needs so normal users can run it without sudo:
 ## Notes
 
 There are some tests now, but output containing host names instead of IP
-addresses will not be properly parsed. This might be fixed soon:
-
-`cd ./spec && rspec .`
-
+addresses will not be properly parsed. This might be fixed soon.
 
 ## Installation
 
@@ -74,6 +71,12 @@ first_host = report.hosts.first
 first_host.ip_addr 	=> '10.0.0.1'
 first_host.mac 	=> '00:11:22:33:44:55'
 first_host.oui 	=> "NIC Manufacturer"
+```
+
+## Run the Tests
+```ruby
+cd arp_scan/spec
+rspec .
 ```
 
 
