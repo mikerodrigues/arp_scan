@@ -10,7 +10,9 @@ You will need to make sure `arp-scan` is installed. See the arp-scan homepage at
 `arp-scan` generally requires root privs to run. I use `setcap` to give it the
 raw socket privs it needs so normal users can run it without sudo:
 
-	`sudo setcap cap_net_raw+ep /usr/bin/arp-scan`
+```shell
+	sudo setcap cap_net_raw+ep /usr/bin/arp-scan
+```
 
 ## Notes
 
