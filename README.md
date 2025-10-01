@@ -7,28 +7,18 @@ Very simple wrapper for using and parsing output from `arp-scan`.
 
 You will need to make sure `arp-scan` is installed. See the arp-scan homepage at http://www.nta-monitor.com/tools/arp-scan/
 
-You'll also need superuser privileges to run `arp-scan`, you have have a few
-options but be sure to understand what you're doing before you do it:
+`arp-scan` generally requires root privs to run. I use `setcap` to give it the
+raw socket privs it needs so normal users can run it without sudo:
 
-* Edit `/etc/sudoers` to allow user to run `arp-scan` as root without a
-  password.
-
-	`user host = (root) NOPASSWD: /usr/bin/arp-scan`
-
-* Set the SUID bit on the `arp-scan` bin:
-
-	 `sudo chmod u+s /usr/bin/arp-scan`
-
-* Run your Ruby code as root (I wouldn't do this)
-
-I use the SUID method but if you have other people logging into your machine you
-should probably go with the `/etc/sudoers` method.
-
+	`sudo setcap cap_net_raw+ep /usr/bin/arp-scan`
 
 ## Notes
 
 There are some tests now, but output containing host names instead of IP
-addresses will not be properly parsed. This might be fixed soon.
+addresses will not be properly parsed. This might be fixed soon:
+
+`cd ./spec && rspec .`
+
 
 ## Installation
 
