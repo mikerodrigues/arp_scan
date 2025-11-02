@@ -54,6 +54,8 @@ module ARPScan
       @hosts = hash[:hosts]
       @interface = hash[:interface]
       @datalink = hash[:datalink]
+      @ipv4 = hash[:ipv4]
+      @mac = hash[:mac]
       @version = hash[:version]
       @range_size = Integer(hash[:range_size])
       @scan_time = Float(hash[:scan_time])
@@ -82,6 +84,8 @@ module ARPScan
       { hosts: @hosts.map(&:to_hash),
         interface: @interface,
         datalink: @datalink,
+        ipv4: @ipv4,
+        mac: @mac,
         version: @version,
         range_size: @range_size,
         scan_time: @scan_time,

@@ -38,8 +38,8 @@ module ARPScan
       results[:hosts] = string.scan(HOST_ENTRY_REGEX).map { |entry| Host.new(*entry) }
       results[:interface],
         results[:datalink],
-        results[:ipv4],
-        results[:mac] = string.scan(INTERFACE_SUMMARY_REGEX)[0]
+        results[:mac],
+        results[:ipv4] = string.scan(INTERFACE_SUMMARY_REGEX)[0]
       results[:version],
         results[:range_size],
         results[:scan_time],
