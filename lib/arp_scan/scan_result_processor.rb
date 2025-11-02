@@ -14,7 +14,15 @@ module ARPScan
 
     # Regex to capture interface and datalink
     #
-    INTERFACE_SUMMARY_REGEX = /Interface: (?<interface>.+), datalink type: (?<datalink>.*$)/
+    INTERFACE_SUMMARY_REGEX = /
+    ^Interface:\s+(?<interface>[^,\n]+),
+    (?:\s*datalink)?\s*type:\s*(?<datalink>[^\n,]+?)(?=,\s*MAC:|$)
+    (?:,\s*MAC:\s*(?<mac>[0-9A-Fa-f]{2}(?::[0-9A-Fa-f]{2}){5}))?
+      (?:,\s*IPv4:\s*(?<ipv4>(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)))?
+      $
+    /x
+
+
 
     # Regex to capture arp-scan version, scan range size, scan time, scan rate,
     # and the number of responding hosts.
@@ -29,12 +37,14 @@ module ARPScan
       results = {}
       results[:hosts] = string.scan(HOST_ENTRY_REGEX).map { |entry| Host.new(*entry) }
       results[:interface],
-      results[:datalink] = string.scan(INTERFACE_SUMMARY_REGEX)[0]
+        results[:datalink],
+        results[:ipv4],
+        results[:mac] = string.scan(INTERFACE_SUMMARY_REGEX)[0]
       results[:version],
-      results[:range_size],
-      results[:scan_time],
-      results[:scan_rate],
-      results[:reply_count] = string.scan(SCAN_SUMMARY_REGEX)[0]
+        results[:range_size],
+        results[:scan_time],
+        results[:scan_rate],
+        results[:reply_count] = string.scan(SCAN_SUMMARY_REGEX)[0]
       results[:arguments] = arguments
       ScanReport.new(results)
     end

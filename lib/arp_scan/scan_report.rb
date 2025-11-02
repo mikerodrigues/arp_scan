@@ -17,6 +17,14 @@ module ARPScan
     #
     attr_reader :datalink
 
+    # IP address of interface
+    # 
+    attr_reader :ipv4
+
+    # MAC address of the interface
+    # 
+    attr_reader :mac
+
     # `arp-scan` version number.
     #
     attr_reader :version
