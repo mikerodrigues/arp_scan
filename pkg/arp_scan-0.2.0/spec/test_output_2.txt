@@ -1,0 +1,9 @@
+Interface: enp4s0, type: EN10MB, MAC: a1:b2:c3:d4:e5:f6, IPv4: 10.0.0.5
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+10.0.0.1	11:22:33:44:55:66	GL Technologies (Hong Kong) Limited
+10.0.0.100	aa:bb:cc:dd:ee:ff	SHENZHEN ZHIBOTONG ELECTRONICS CO.,LTD
+10.0.0.213	1a:2b:3c:4d:e5:f6	(Unknown)
+
+3 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.10.0: 256 hosts scanned in 1.965 seconds (130.28 hosts/sec). 3 responded
+

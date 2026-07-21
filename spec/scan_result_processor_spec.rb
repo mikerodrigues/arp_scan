@@ -5,8 +5,8 @@ require_relative './spec_helper'
 module ARPScan
   describe ScanResultProcessor do
     argument_string = '-l'
-    report_string = File.read './test_output.txt'
-    report_string_2 = File.read './test_output_2.txt'
+    report_string = File.read(File.expand_path('test_output.txt', __dir__))
+    report_string_2 = File.read(File.expand_path('test_output_2.txt', __dir__))
     report = ARPScan::ScanResultProcessor.process(report_string, argument_string)
     report_2 = ARPScan::ScanResultProcessor.process(report_string_2, argument_string)
 
