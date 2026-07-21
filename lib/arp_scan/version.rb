@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module ARPScan
-  VERSION = '3.4.10'
+  VERSION = '0.2.0'
 end
