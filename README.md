@@ -75,10 +75,18 @@ first_host.mac 	=> '00:11:22:33:44:55'
 first_host.oui 	=> "NIC Manufacturer"
 ```
 
+## Build the Gem
+
+```shell
+bundle exec rake build
+```
+
+This writes the packaged gem to `pkg/`.
+
 ## Run the Tests
-```ruby
-cd arp_scan/spec
-rspec .
+
+```shell
+bundle exec rake spec
 ```
 
 
