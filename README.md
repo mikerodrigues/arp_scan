@@ -5,7 +5,7 @@
 
 Very simple wrapper for using and parsing output from `arp-scan`.
 
-You will need to make sure `arp-scan` is installed. See the arp-scan homepage at http://www.nta-monitor.com/tools/arp-scan/
+You will need to make sure `arp-scan` is installed. See the arp-scan homepage at https://github.com/royhills/arp-scan
 
 `arp-scan` generally requires root privs to run. I use `setcap` to give it the
 raw socket privs it needs so normal users can run it without sudo:
